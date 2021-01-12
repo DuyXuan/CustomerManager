@@ -1,0 +1,68 @@
+<form [formGroup]="myForm" class="w-75">
+  <div class="form-group row mt-5">
+    <label for="" class="form-label font-weight-bold">firstName</label
+    ><input
+      type="text"
+      class="form-control"
+      placeholder="enter first name"
+      formControlName="firstName"
+    />
+  </div>
+  <div class="form-group row mt-5">
+    <label for="" class="form-label font-weight-bold">lastName</label
+    ><input
+      type="text"
+      class="form-control"
+      placeholder="enter first name"
+      formControlName="lastName"
+    />
+  </div>
+  <div class="form-group row mt-5">
+    <label for="" class="form-label font-weight-bold">address</label
+    ><input
+      type="text"
+      class="form-control"
+      placeholder="enter  address"
+      formControlName="address"
+    />
+  </div>
+  <div class="form-group row mt-5">
+    <label for="" class="form-label font-weight-bold">city</label
+    ><input
+      type="text"
+      class="form-control"
+      placeholder="enter  city"
+      formControlName="city"
+    />
+  </div>
+  <div class="form-group row mt-5">
+    <label for="" class="form-label font-weight-bold">state</label
+    ><input
+      type="text"
+      class="form-control"
+      placeholder="enter state name"
+      formControlName="state"
+    />
+  </div>
+  <div *ngIf="action == 'edit'" class="float-left">
+    <button class="btn btn-danger" type="button" (click)="deleteCustomer()">
+      Delete
+    </button>
+  </div>
+  <div class="form-group d-flex justify-content-end">
+    <button *ngIf="myForm.valid" class="btn btn-primary" type="button">
+      Cancel
+    </button>
+    <div *ngIf="action == 'add'">
+      <button class="btn btn-success" type="button" (click)="addNewCustomer()">
+        Insert
+      </button>
+    </div>
+
+    <div *ngIf="action == 'edit'">
+      <button class="btn btn-success" type="button" (click)="updateCustomer()">
+        Update
+      </button>
+    </div>
+  </div>
+</form>

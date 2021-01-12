@@ -1,0 +1,38 @@
+<div class="container mt-2">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div id="my-nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="cardView"
+            routerLinkActive="activeLink"
+            >Card View
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="listView"
+            routerLinkActive="activeLink"
+            tabindex="-1"
+            aria-disabled="true"
+            >List View</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            (click)="moveToAdd()"
+            class="nav-link"
+            tabindex="-1"
+            aria-disabled="true"
+            >New Customer</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

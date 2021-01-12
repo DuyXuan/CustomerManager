@@ -1,0 +1,43 @@
+<div class="form-group">
+  <p>filter:</p>
+  <input type="text" (change)="search()" [(ngModel)]="nameToSearch" />
+</div>
+<div class="row">
+  <div
+    class="col-6 mt-3"
+    *ngFor="
+      let item of customerList
+        | sort: nameToSearch
+        | paginate: { itemsPerPage: 10, currentPage: pageIndex }
+    "
+  >
+    <div class="card bg-light mb-3">
+      <h3 class="card-header font-weight-bold bg-primary text-white">
+        {{ item.firstName }} {{ item.lastName }}
+        <button
+          class="btn btn-success float-right"
+          type="button"
+          (click)="moveToEdit(item.id)"
+        >
+          edit
+        </button>
+      </h3>
+      <div class="card-body row">
+        <div class="mr-5">
+          <div *ngIf="item.gender == 'male'">
+            <img width="60" src="../assets/images/male.png" alt="" />
+          </div>
+          <div *ngIf="item.gender == 'female'">
+            <img width="60" src="../assets/images/female.png" alt="" />
+          </div>
+        </div>
+        <div>
+          <p class="card-text">{{ item.city }},</p>
+          <p class="card-text">{{ item.state.name }}</p>
+          <a class="text-primary" (click)="moveToOrder(item.id)">View Order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<pagination-controls (pageChange)="pageIndex = $event"></pagination-controls>

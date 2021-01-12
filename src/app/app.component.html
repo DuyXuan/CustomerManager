@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand"><img src="../assets/images/people.png" alt="" /></a>
+
+  <div id="my-nav" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white">
+          <h5>Customer Manage</h5>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-white"
+          routerLink="customer/cardView"
+          routerLinkActive="activeLink"
+        >
+          Customer
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" aria-disabled="true">Setting</a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link text-white"
+          routerLink="/login"
+          aria-disabled="true"
+          routerLinkActive="activeLink"
+        >
+          {{ checkLogin() }}
+        </a>
+      </li>
+      <li class="nav-item mt-2">
+        <a class="text-white" (click)="logout()" *ngIf="showLogout == true"
+          >(logout)</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

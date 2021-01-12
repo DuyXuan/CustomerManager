@@ -1,0 +1,58 @@
+<div class="form-group">
+  <p>filter:</p>
+  <input type="text" (change)="search()" [(ngModel)]="nameToSearch" />
+</div>
+<table class="table table-light mt-3">
+  <thead class="thead-light">
+    <tr>
+      <th></th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>address</th>
+      <th>city</th>
+      <th>state</th>
+      <th>order total</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let item of customerList
+          | sort: nameToSearch
+          | paginate: { itemsPerPage: 10, currentPage: pageIndex }
+      "
+    >
+      <td>
+        <div *ngIf="item.gender == 'male'">
+          <img width="60" src="../assets/images/male.png" alt="" />
+        </div>
+        <div *ngIf="item.gender == 'female'">
+          <img width="60" src="../assets/images/female.png" alt="" />
+        </div>
+      </td>
+      <td>
+        {{ item.firstName }}
+      </td>
+      <td>
+        {{ item.lastName }}
+      </td>
+      <td>
+        {{ item.address }}
+      </td>
+      <td>
+        {{ item.city }}
+      </td>
+      <td>
+        {{ item.state.name }}
+      </td>
+      <td><span>$</span> {{ getTotal(item) }}</td>
+      <td>
+        <a class="text-primary" type="button" (click)="moveToOrder(item.id)"
+          >View Orders</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="pageIndex = $event"></pagination-controls>

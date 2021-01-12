@@ -1,0 +1,21 @@
+<h4>
+  Orders of {{ customerList[0].firstName }} {{ customerList[0].lastName }}
+</h4>
+<table class="table table-light">
+  <tbody>
+    <ng-container *ngFor="let item of orderItem">
+      <tr>
+        <td>{{ item.productName }}</td>
+        <td><span>$</span>{{ item.itemCost }}</td>
+      </tr>
+    </ng-container>
+
+    <tr>
+      <td>
+        <hr />
+        <p class="float-right"><span>$</span>{{ totalCost }}</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a (click)="moveToCustomer()" class="text-primary">view All Customer</a>
